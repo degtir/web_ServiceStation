@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block title %}Car Service{% endblock %}
+{% block content %}
+<!---->
+<div class="welcome">
+<div class="container">
+<div class="welcome_sec">
+ <div class="col-md-6 welcome_info">
+      <h3>Добро пожаловать</h3>
+      <span></span>
+      <h4>Что мы предлагаем</h4>
+      <p>Мы предлагаем полный спектр гаражных услуг владельцам транспортных средств.
+        Наши специалисты знают, как справиться с широким спектром автомобильных услуг. Независимо от того, управляете ли вы легковым автомобилем или грузовиком среднего размера или внедорожником, наши механики стремятся к тому, чтобы ваш автомобиль работал в лучшем виде, прежде чем покинуть наш автомагазин. 
+        наши механики стремятся к тому, чтобы ваш автомобиль работал в лучшем виде, прежде чем покинуть наш автомагазин. Независимо от того, управляете ли вы грузовиком среднего размера, легковым автомобилем или внедорожником, наши механики стремятся обеспечить это.
+      </p>
+     <p>Если вы хотите качество, которое вы ожидаете от дилерского центра, но с более личной и дружелюбной атмосферой, вы его нашли. Мы инвестировали во все новейшие специализированные инструменты и диагностическое программное обеспечение, специально разработанное для программного обеспечения вашего автомобиля. Наша авторемонтная мастерская способна обслуживать самые разные модели. Мы выполняем только ту работу, которая необходима для решения вашей проблемы.</p>
+     <a href="services/" class="hvr-bounce-to-bottom">Читать далее</a>
+ </div>
+ <div class="col-md-6 welcome_pic">
+     <h2>Почему выбирают нас?</h2>
+     <img src="{% static "images/wc.jpg" %}" class="img-responsive" alt=""/>
+     <h3>Потому что мы лучшие</h3>
+     <p>Мы являемся одной из ведущей авторемонтных мастерских, обслуживающих клиентов.
+        Все услуги механика выполняются высококвалифицированными специалистами.</p>
+     <p></p>
+ </div>
+ <div class="clearfix"></div>
+</div>
+</div>
+</div>
+<!---->
+<div class="auto_sec">
+<div class="container">
+<h3>Полный автосервис</h3>
+<span></span>
+<div class="auto_sec_grids">
+  <div class="col-md-8 auto_sec_left">						 
+     <img src="{% static "images/pic2.jpg" %}" class="img-responsive" alt=""/>
+     <h5>Наши преимущества</h5>
+     <p>Мы делаем ремонт и обслуживание автомобилей более удобными для Вас. 
+        Мы дружелюбная, отзывчивая и профессиональная группа людей. 
+        Наши специалисты знают, как справиться с широким спектром автомобильных услуг. 
+        Мы делаем работу правильно — с первого раза. 
+        Обслуживание в тот же день для большинства ремонтов и технического обслуживания.</p>
+  </div>
+  <div class="col-md-4 auto_sec_right">
+     <p><a href="/orders/appointment">Записаться на прием</a></p>
+  </div>
+  <div class="clearfix"></div>
+</div>
+</div>
+</div>
+<!---->
+<script>
+$(function () {
+$("#slider2").responsiveSlides({
+auto: true,
+speed: 500,
+namespace: "callbacks2",
+pager: true,
+});
+});
+</script>
+
+<div class="slider btm_sld">
+<div class="container">
+<div class="callbacks2_container">
+ <ul class="rslides" id="slider2">
+         <li>						 
+            <p> Клиентам нашего автосервиса доступны оригинальные и лицензионные качественные запчасти.</p>	   					  
+         </li>	
+         <li>						 
+            <p> Многие запчасти и материалы можно найти на собственном складе центра, что экономит ваше время.</p>	  					  
+         </li>
+         <li>						 
+            <p> Контрактные оригинальные узлы и агрегаты с минимальным пробегом есть в наличии или под заказ.</p>	   					  
+         </li>		
+         <li>						 
+            <p> Опытные специалисты помогут подобрать любые запчасти для вашего автомобиля.</p>	   					  
+         </li>
+         <li>						 
+            <p> Все автозапчасти, продаваемые в Inter Hofmann, сертифицированы и на них распространяется гарантия.</p>	   					  
+         </li>
+ </ul>
+</div>
+</div>
+</div>
+<!---->
+
+<!---->
+<div class="feature_sec">
+<div class="container">
+<div class="feature_head">
+ <h3>Свежие новости</h3>
+ <span></span>
+</div>
+<ul id="flexiselDemo3">
+     <li>
+        <div class="biseller-column">
+                <a href="#"><img src="{% static "images/pic6.jpg" %}" alt=""/></a>
+                <h4>Какие то новости</h4>
+                <p> Какие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новости. </p>
+                <a class="more hvr-bounce-to-bottom" href="gallery.html">Читать подробнее..</a>
+        </div>
+    </li>
+    <li>
+        <div class="biseller-column">
+                <a href="#"><img src="{% static "images/pic5.jpg" %}" alt=""/></a>
+                <h4>Какие то новости</h4>
+                <p>Какие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие .</p>
+                <a class="more hvr-bounce-to-bottom" href="gallery.html">Читать подробнее..</a>
+        </div>
+    </li>
+    <li>
+        <div class="biseller-column">
+                <a href="#"><img src="{% static "images/pic8.jpg" %}" alt=""/></a>
+                <h4>Какие то новости</h4>
+                <p>Какие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новости.</p>
+                <a class="more hvr-bounce-to-bottom" href="gallery.html">Читать подробнее..</a>
+        </div>
+    </li>
+    <li>
+        <div class="biseller-column">
+                <a href="#"><img src="{% static "images/pic6.jpg" %}" alt=""/></a>
+                <h4>Какие то новости</h4>
+                <p>Какие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новостиКакие то новости..</p>
+                <a class="more hvr-bounce-to-bottom" href="gallery.html">Читать подробнее..</a>
+        </div>
+    </li>
+ </ul>
+    <div class="clearfix"></div>
+<script type="text/javascript">
+     $(window).load(function() {
+        $("#flexiselDemo3").flexisel({
+            visibleItems:4,
+            animationSpeed: 1000,
+            autoPlay: true,
+            autoPlaySpeed: 3000,    		
+            pauseOnHover: true,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: { 
+                portrait: { 
+                    changePoint:480,
+                    visibleItems:2
+                }, 
+                landscape: { 
+                    changePoint:640,
+                    visibleItems:2
+                },
+                tablet: { 
+                    changePoint:768,
+                    visibleItems:3
+                }
+            }
+        });
+        
+    });
+   </script>
+   <script type="text/javascript" src="{% static "js/jquery.flexisel.js" %}"></script>			 
+</div>
+</div>
+<!---->
+
+{% endblock %}

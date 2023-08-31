@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block title %}Make an appointment{% endblock %}
+{% block content %}
+<h1>Создать запрос</h1>
+<p>Оставьте свою заявку и мы свяжемся с Вами</p>
+<form action="appointment" method="POST">
+    <p><label for="car-select">Выбрать автомобили:</label></p>
+    {% if cars%}
+    <select name="car-select" id="car-select">
+        {% for car in cars %}
+        <option name="option" value="{{ car.id }}">{{car.make}} {{car.model}}</option>
+        {% endfor %}
+    </select>
+    {% else %}
+    <ul>
+        <li class="errorlist nonefield">
+            Вы еще не указали свой автомобиль
+            Указать свой автомобиль можно в личном кабинете
+        </li>
+    </ul>
+    {{ car_form.as_p }}
+    {% endif %}
+    {{ order_form.as_p }}    
+    {{ date_form.as_p }}
+    <label for="time-select"> Availiable time: </label>
+    <select name="time-select" id="time-select">
+    {% for time in times%}
+        <option value="{{time}}">{{time}}</option>
+    {% endfor %}
+    </select>
+    {% csrf_token %}    
+    <p><input type="submit" value="Submit"></p> 
+</form>
+<script src="{% static "js/script.js" %}"></script>
+{% endblock %}

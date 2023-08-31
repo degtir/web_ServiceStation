@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block title %}Services{% endblock %}
+{% block content %}
+<h1>Edit order {{order.id}}</h1>  
+<div class="edit-order">
+    <p>Пользователь: <span>{{order.user}}, {{order.user.first_name}} {{order.user.last_name}}</span></p>
+    <p>Контакты: <span> {{order.profile.phone}}, {{order.user.email}} </span></p>
+    <p>Автомобиль: <span>{{order.car.make}} {{order.car.model}} {{order.car.year}} {{order.car.vin}}</span></p>
+    <p>Актуальный статус: <span>{{order.status}} </span></p>
+    <p>Создано: <span>{{order.created_at}}</span></p>
+    <p>Сообщение: <span>{{order.message}}</span></p>
+    
+    <hr>
+    <p>Отредактируйте запрос используя данную форму</p>  
+    <form action="/orders/edit/{{order.id}}" method="post" enctype="multipart/form-data">    
+        {{ order_form.as_p }}       
+        {% csrf_token %}    
+        <p><input type="submit" value="Save changes"></p>  
+    </form> 
+</div>
+{% endblock %}

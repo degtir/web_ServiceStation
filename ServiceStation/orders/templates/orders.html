@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Orders{% endblock %}
+{% block content %}  
+<h1>Запросы</h1>  
+<div class="search">
+    <form method="POST">
+       <input type="text" value="" name="query" placeholder="Поиск...">
+       <input type="submit" value="">
+       {% csrf_token %}  
+        <label for="search-filter">Фильтр:</label>
+        <select name="search-filter" id="search-filter">
+            {% if request.user.is_staff%}
+            <option value="First name">Имя</option>
+            <option value="Second name">Фамилия</option>
+            {% endif %}
+            <option value="Car make"> Марка</option>
+            <option value="Car model"> Модель</option>
+            <option value="Car vin">VIN</option>
+            <option value="Date">Дата</option>
+            <option value="Type">Тип</option>
+        </select>
+    </form> 
+    {% if query %}
+    <p>По запросу {{search}}: <span>"{{query}}"</span></p>
+    {% endif %}
+</div>
+{% if request.user.is_staff %}
+<h3>Все запросы:</h3> 
+{% else %}
+<div class="new-order">
+<p>Создать новый запрос</p>
+<a href="appointment" class="button">Создать новый запрос</a>
+</div>
+<h3>Мои запросы:</h3>
+{% endif %}
+<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav nav-filter">
+        <li {% if not filter %} class="active"{% endif %}><a href="/orders/">Все</a></li>
+        <li {% if filter == 'waiting' %} class="active"{% endif %}><a href="/orders/?filter=waiting">В ожидании</a></li>
+        <li {% if filter == 'in-progress' %} class="active"{% endif %}><a href="/orders/?filter=in-progress">Выполняются сейчас</a></li>
+        <li {% if filter == 'completed' %} class="active"{% endif %}><a href="/orders/?filter=completed">Завершены</a></li> 
+        <li {% if filter == 'cancelled' %} class="active"{% endif %}><a href="/orders/?filter=cancelled">Отменены</a></li> 
+    </ul>
+</div>
+{% if orders.object_list.count %}
+{% for order in orders.object_list%}
+<div class="order">
+    <div>
+        <!-- <i class="far fa-clipboard pic"></i> -->
+        {% if order.status == 'Cancelled' %}
+        <i class="far fa-times-circle"></i>
+        {% elif order.status == 'Completed' %}
+        <i class="far fa-check-circle"></i>
+        {% elif order.status == 'Waiting' %}
+        <i class="far fa-clock"></i>
+        {% elif order.status == 'In progress'%}
+        <i class="far fa-play-circle"></i>
+        {% endif %}
+    </div>
+    <div style="flex-grow: 1;">
+        <h3>Order {{order.id}}</h3>
+        {% if request.user.is_staff %}
+        <p>User: <span>{{order.user}}, {{order.user.first_name}} {{order.user.last_name}}</span></p>
+        <p>User contacts: <span> {{order.profile.phone}}, {{order.user.email}} </span></p>
+        {% endif %}
+        <p>Авто: <span>{{order.car.make}} {{order.car.model}} {{order.car.year}} {{order.car.vin}}</span></p>
+        <p>Тип: <span>{{order.type}}</span></p>
+        <p>Создано: <span>{{order.created_at}}</span></p>
+        <p>Статус: <span>{{order.status}}</span></p>
+        <p>Время: <span>{{order.date.date}},  {{order.date.time}}</span></p>
+        <p>Сообщение: <span> {{order.message}}</span></p>
+        {% if order.status == 'Completed' %}
+        <p>Цена: <span>{{order.price}} $</span></p>
+        <p>Закрыто: <span>{{order.closed_at}}</span> </p>
+        {% elif order.status == 'In progress' %}
+        <p>Окончательная цена: <span>{{order.price}} $</span></p>
+        {% endif %}
+    </div>
+    {% if request.user.is_staff and order.status == 'In progress' or request.user.is_staff and order.status == 'Waiting' %}
+    <div style="align-self: flex-end; justify-content:space-between;">
+        <a href="edit/{{order.id}}" class="button">Edit</a>
+        <!-- {% if request.user.is_staff and order.status != 'Cancelled' or request.user.is_staff and order.status != 'Completed' %}
+            {% if request.user.is_staff and order.status == 'Waiting' %}    
+            <a href="#" class="button">Accept</a>
+            <a class="button" href="#">Cancel</a>
+            {% elif request.user.is_staff and order.status == 'In progress' %}
+            <a href="#" class="button">Close</a>
+            <a class="button" href="#">Cancel</a>
+            {% endif %}
+        {% else %}
+            {% if order.status == 'Waiting' %}
+            <a class="button" href="#">Cancel</a>
+            {% endif %}
+        {% endif %} -->
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+{% else %}
+<p>Нет запросов.</p>
+{% endif %}
+{% include "pagination.html" with page=orders %}
+{% endblock %}

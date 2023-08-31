@@ -1,0 +1,364 @@
+.wrap {
+	width: 100%;
+	position: relative;
+		padding: 1em 0 0;
+}
+.wrap > header {
+	width: 90%;
+	max-width: 1240px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0 30px 50px 30px;
+}
+.wrap > header {
+	padding: 60px 30px 50px;
+	text-align: center;
+}
+.wrap > header h1 {
+	font-size: 34px;
+	line-height: 38px;
+	margin: 0 auto;
+	font-weight: 700;
+	color: #333;
+}
+
+.wrap > header h1 span {
+	display: block;
+	font-size: 20px;
+	font-weight: 300;
+}
+.main > p {
+	text-align: center;
+	padding: 50px 20px;
+}
+/* Header Style */
+.codrops-top {
+	line-height: 24px;
+	font-size: 11px;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
+	z-index: 9999;
+	position: relative;
+	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+}
+
+.codrops-top a {
+	padding: 0px 10px;
+	letter-spacing: 1px;
+	color: #333;
+	display: inline-block;
+}
+
+.codrops-top a:hover {
+	background: rgba(255,255,255,0.8);
+	color: #000;
+}
+
+.codrops-top span.right {
+	float: right;
+}
+
+.codrops-top span.right a {
+	float: left;
+	display: block;
+}
+/*----*/
+.og-grid {
+	list-style: none;
+	padding: 20px 0;
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+
+}
+.og-grid li {
+  display: inline-block;
+  margin: 15px 0;
+  vertical-align: top;
+  height: 250px;
+  width: 24.7%;
+  padding: 0px 15px;
+}
+.og-grid li > a,
+.og-grid li > a img {
+	border: none;
+	outline: none;
+	display: block;
+	position: relative;
+}
+
+.og-grid li.og-expanded > a::after {
+	top: auto;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-bottom-color:#F5F5F5;
+	border-width: 15px;
+	left: 50%;
+	margin: -20px 0 0 -15px;
+}
+
+.og-expander {
+	position: absolute;
+	background:#f5f5f5;
+	top: auto;
+	left: 0;
+	width: 97.5%;
+	margin: 10px 15px 0;
+	text-align: left;
+	height: 0;
+	overflow: hidden;
+}
+
+.og-expander-inner {
+	padding: 50px 30px;
+	height: 100%;
+}
+
+.og-close {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
+
+.og-close::before,
+.og-close::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	height: 1px;
+	background: #5e345e;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.og-close::after {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.og-close:hover::before,
+.og-close:hover::after {
+	background: #333;
+}
+
+.og-fullimg,
+.og-details {
+	width: 50%;
+	float: left;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.og-details {
+	padding: 0 40px 0 20px;
+}
+
+.og-fullimg {
+	text-align: center;
+}
+
+.og-fullimg img {
+	display: inline-block;
+	max-height: 100%;
+	max-width: 100%;
+}
+.og-details h3 {
+	font-weight: 700;
+	font-size: 1.5em;
+	padding: 40px 0 10px;
+	margin-bottom: 10px;
+	color: #F66C54;
+}
+.og-details p {
+	font-size: 0.95em;
+	line-height:1.9em;
+	color: #999;
+}
+.og-details a {
+	font-weight: 700;
+	font-size: 16px;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 10px 20px;
+	border: 3px solid #fff;
+	display: none;
+	margin: 30px 0 0;
+	outline: none;
+	
+	text-decoration: none;
+}
+.og-details a::before {
+	content: '\2192';
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.og-details a:hover {
+	border-color: #5e345e;
+  color: #FFF;
+  background-color: #5e345e;
+}
+
+.og-loading {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #ddd;
+	box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ccc;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -25px 0 0 -25px;
+	-webkit-animation: loader 0.5s infinite ease-in-out both;
+	-moz-animation: loader 0.5s infinite ease-in-out both;
+	animation: loader 0.5s infinite ease-in-out both;
+}
+
+@-webkit-keyframes loader {
+	0% { background: #ddd; }
+	33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+	66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+
+@-moz-keyframes loader {
+	0% { background: #ddd; }
+	33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+	66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+
+@keyframes loader {
+	0% { background: #ddd; }
+	33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+	66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+/*--responsive---*/
+@media(max-width:1024px){
+.og-grid li {
+  width: 24.6%;
+}
+.og-grid {
+  padding: 20px 0 0;
+}
+.og-details p {
+  font-size: 0.8em;
+}
+.og-details h3 {
+  padding: 12px 0 10px;
+}
+.og-expander {
+  height: 426px!important;
+}
+}
+@media(max-width:768px){
+.og-grid li {
+  width: 23.58%;
+  height: 144px;
+  padding: 0px 10px;
+}
+.og-expander h3 {
+  font-size: 1.1em;
+}
+.og-details {
+  padding: 0 0px 0 20px;
+}
+.og-grid {
+  padding: 0px 0 0;
+}
+}
+@media(max-width:640px){
+.og-grid li {
+  width: 24.4%;
+  height: 128px;
+  padding: 0px 8px;
+  margin: 10px 0;
+}
+.og-grid {
+  padding: 6px 0 0;
+}
+.og-details h3 {
+  padding: 0px 0 0px;
+}
+.og-details a {
+  margin: 10px 0 0;
+}
+.og-expander {
+  margin: 10px 8px 0px;
+}
+}
+/*---component--*/
+@media screen and (max-width: 830px) {
+
+	.og-expander h3 { font-size: 32px; }
+	.og-expander p { font-size: 13px; }
+	.og-expander a { font-size: 12px; }
+	.og-expander h3 {
+  font-size: 1.2em;
+}
+}
+@media(max-width:480px){
+.og-grid li {
+  width: 49%;
+  height: 199px;
+  padding: 0px 8px;
+  margin: 8px 0;
+}
+.og-fullimg, .og-details {
+  width: 100%;
+}
+.og-fullimg, .og-details {
+  overflow: inherit;
+}
+.og-details p {
+  line-height: 1.7em;
+}
+.og-expander h3 {
+  font-size: 1em;
+  margin:1em 0;
+}
+.og-expander {
+  height: 542px!important;
+}
+.og-expander-inner {
+  height: 52%;
+}
+}
+@media (max-width: 414px){
+.og-expander-inner {
+  height: 45%;
+}
+.og-expander {
+  height: 543px!important;
+}
+}
+@media(max-width:320px){
+.og-grid li {
+  width: 49.0%;
+  height: 128px;
+  padding: 0px 4px;
+}
+.wrap {
+  padding: 0.5em 0 0;
+}
+.og-expander-inner {
+  padding: 43px 15px;
+}
+.og-expander {
+  margin: 10px 4px 0px;
+}
+.og-expander h3 {
+  font-size: 0.85em;
+}
+}

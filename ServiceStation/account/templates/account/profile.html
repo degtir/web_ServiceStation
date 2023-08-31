@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h2>Личный кабинет</h2> 
+<p>Добро пожаловать в личный кабинет, {{ request.user.username }}. Вы можете <a href="{% url "edit" %}">изменить свою личную информацию</a></p> 
+<div class="container-info">
+    <img class="avatar" {% if profile.photo %} src="/media/{{profile.photo}}" {% else %} src="{% static "images/profile.png" %}" {% endif %} alt="">
+    <div class="info">
+        <p>Имя: <span> {{request.user.first_name}}</span></p>
+        <p>Фамилия: <span> {{request.user.last_name}}</span></p>
+        <p>Дата рождения: <span> {{profile.date_of_birth}}</span></p>
+        <p>E-mail: <span> {{request.user.email}}</span></p>
+        <p>Телефон: <span>{{profile.phone}}</span></p>
+        <p>Адресс: <span>{{profile.address}}</span></p>
+    </div>
+</div> 
+
+{% if not request.user.is_staff%}
+<h3>Мои автомобили:</h3>
+<div class="all-cars">
+    {% if cars.count > 0 %}
+    {% for car in cars %}
+    <div class="car" id="car-{{car.id}}">   
+        <!-- <img src="{% static "images/service-2.png" %}" alt=""> -->
+        <i class="fa fa-car"></i>
+        <p>Марка:  <span><br/>{{car.make}}</span></p>
+        <p>Модель: <span><br/>{{car.model}}</span></p>
+        <p>Возраст: <span><br/>{{car.year}}</span></p>
+        <p>VIN: <span><br>{{car.vin}}</span></p>
+        <a id="delete-car" class="button" data-id="{{car.id}}" href="#">Удалить</a>
+    </div>
+    {% endfor %}
+</div>
+{%else%}
+<p>Вы еще не зарегистрировали свои автомобили</p>
+{% endif %}
+<button id="new-car"><i class="fa fa-car"></i> Еще автомобиль </button>
+<h3 id="new-car-header" style="display: none;">Еще авто:</h3>
+<form id="car-form" action="/account/" method="POST" enctype="multipart/form-data">    
+    {{ car_form.as_p }}      
+    {% csrf_token %}    
+    <p><input type="submit" value="Save new car"></p>  
+</form> 
+{% else %}
+<div class="admin-rights">
+    <p>Вы имеете права администратора</p> 
+    <a class="button" href="/admin">Открыть панель администратора сайта</a>
+</div>
+</div>
+{% endif %}
+<script src="{% static "js/script.js" %}"></script>
+{% endblock %} 
+</div>
